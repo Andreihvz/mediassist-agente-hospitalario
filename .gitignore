@@ -1,0 +1,22 @@
+# Entornos virtuales de Python
+venv/
+.venv/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Node / React
+frontend/node_modules/
+frontend/dist/
+
+# Variables de entorno y claves
+.env
+*.env
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
