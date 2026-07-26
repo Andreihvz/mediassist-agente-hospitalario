@@ -643,7 +643,7 @@ function ScheduleSection() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          paciente: patientName.trim(),
+          nombre: patientName.trim(),
           telefono: phone.trim(),
           especialidad: selectedSpecialty,
           medico: selectedDoctor,
@@ -655,9 +655,11 @@ function ScheduleSection() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(
-          data?.detail || "No fue posible registrar la cita."
-        );
+        const mensajeError = Array.isArray(data?.detail)
+          ? data.detail.map((err) => err.msg).join(", ")
+          : data?.detail || "No fue posible registrar la cita.";
+
+        throw new Error(mensajeError);
       }
 
       const folio =
